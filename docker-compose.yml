@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # Neo4j Graph Database
+  # Neo4j db
   neo4j:
     image: neo4j:latest
     container_name: neo4j-bnp
@@ -15,7 +15,7 @@ services:
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs
-      - ./backend/relations:/var/lib/neo4j/import  # Mount CSV files
+      - ./backend/relations:/var/lib/neo4j/import  # mount csv files
     networks:
       - bnp-network
     healthcheck:
@@ -25,7 +25,7 @@ services:
       retries: 5
       start_period: 30s
 
-  # FastAPI Backend
+  # backend
   backend:
     build:
       context: ./backend
@@ -45,7 +45,7 @@ services:
     networks:
       - bnp-network
     volumes:
-      - ./backend:/app  # Mount for development
+      - ./backend:/app 
     restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "python -c \"import requests; requests.get('http://localhost:8000/')\""]
