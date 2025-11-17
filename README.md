@@ -38,6 +38,12 @@ graphQueryAssistant/
 
 ## Running the application
 
+### Prerequises
+- Python 3.8 and above
+- Have docker installed
+- OpenAI API key 
+- pip
+
 ### Installation
 
 1. **Clone the repository**
@@ -65,6 +71,7 @@ docker-compose exec backend python load_graph_data.py
 
 5. **Start the frontend**
 ```bash
+cd frontend
 npm install
 npm run start
 ```
@@ -84,6 +91,7 @@ Once running, access the API documentation using swagger at:
 ### Subsequent running of application
 ```bash
 # start frontend
+cd frontend
 npm run start
 
 # start backend service + db
